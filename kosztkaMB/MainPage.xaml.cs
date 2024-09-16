@@ -11,7 +11,7 @@
 
         private void OnCounterClicked(object sender, EventArgs e)
         {
-           Random r = new Random();
+            Random r = new Random();
             int diceRoll = 6;
             if (K4.IsChecked)
             {
@@ -19,7 +19,7 @@
             }
             if (K6.IsChecked)
             {
-                 diceRoll = r.Next(1, 7);
+                diceRoll = r.Next(1, 7);
             }
             if (K10.IsChecked)
             {
@@ -32,6 +32,17 @@
 
 
             wynik.Text = "Wynik:" + diceRoll.ToString();
+
+
+        }
+
+        private void CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            RadioButton rb = (RadioButton)sender;
+            int maxRoll = int.Parse((string)rb.Value);
+            string fileName = "k" + maxRoll + ".jpg";
+            kosztka.Source = fileName;
+            wynik.Text = String.Empty;
         }
     }
 
